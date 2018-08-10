@@ -1,4 +1,4 @@
-# Parable DI Container
+# Parable Event
 
 [![Build Status](https://travis-ci.org/parable-php/event.svg?branch=master)](https://travis-ci.org/parable-php/event)
 [![Latest Stable Version](https://poser.pugx.org/parable-php/event/v/stable)](https://packagist.org/packages/parable-php/event)
