@@ -1,5 +1,5 @@
 {
-  "name": "parable-php/events",
+  "name": "parable-php/event",
   "type": "library",
   "description": "Parable Events is a simple event system",
   "keywords": ["library", "event", "observer", "listener", "parable"],
