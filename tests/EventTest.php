@@ -23,7 +23,7 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
 
         $payload = 'payload';
 
-        $this->eventManager->update('test_event', $payload);
+        $this->eventManager->trigger('test_event', $payload);
 
         self::assertSame('payload-suffixed', $payload);
     }
@@ -39,7 +39,7 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
 
         $payload = 'payload';
 
-        $this->eventManager->update('test_event', $payload);
+        $this->eventManager->trigger('test_event', $payload);
 
         self::assertSame('payload-suffixed-twice!', $payload);
     }
@@ -55,7 +55,7 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
 
         $payload = 'payload';
 
-        $this->eventManager->update('test_event', $payload);
+        $this->eventManager->trigger('test_event', $payload);
 
         self::assertSame('payload-suffixed', $payload);
     }
@@ -68,8 +68,8 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
 
         $payload = 'payload';
 
-        $this->eventManager->update('once update', $payload);
-        $this->eventManager->update('twice update', $payload);
+        $this->eventManager->trigger('once update', $payload);
+        $this->eventManager->trigger('twice update', $payload);
 
         self::assertSame('payload-suffixed-suffixed', $payload);
     }
@@ -79,6 +79,6 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
         self::expectException(Exception::class);
         self::expectExceptionMessage('Cannot specifically trigger global event.');
 
-        $this->eventManager->update('*');
+        $this->eventManager->trigger('*');
     }
 }

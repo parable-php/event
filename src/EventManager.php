@@ -35,7 +35,7 @@ class EventManager
      *
      * @param null|mixed $payload
      */
-    public function update(string $event, &$payload = null)
+    public function trigger(string $event, &$payload = null)
     {
         if ($event === self::GLOBAL_EVENT) {
             throw new Exception('Cannot specifically trigger global event.');
