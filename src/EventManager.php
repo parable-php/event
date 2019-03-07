@@ -1,26 +1,21 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Parable\Event;
 
 class EventManager
 {
-    private const GLOBAL_EVENT = '*';
+    protected const GLOBAL_EVENT = '*';
+
     /**
      * @var callable[][]
      */
     protected $listeners = [];
 
-    /**
-     * Add the callable to the listeners for this event.
-     */
     public function listen(string $event, callable $listener): void
     {
         $this->listeners[$event][spl_object_hash((object)$listener)] = $listener;
     }
 
-    /**
-     * Add the callable to the global listener list.
-     */
     public function listenAll(callable $listener): void
     {
         $this->listen(self::GLOBAL_EVENT, $listener);
@@ -31,7 +26,9 @@ class EventManager
      * payload is an object, listeners may have changed its state during runtime.
      *
      * If you want to pass a scalar value and have it modifiable, define the
-     * payload as a reference in the listener callback parameter list..
+     * payload as a reference in the listener callback parameter list.
+     *
+     * Example: trigger('event', function (string $event, &$payload) { ... }
      *
      * @param null|mixed $payload
      */
@@ -53,7 +50,7 @@ class EventManager
      */
     protected function getListeners(string $event): array
     {
-        $listeners       = $this->listeners[$event]             ?? [];
+        $listeners = $this->listeners[$event] ?? [];
         $globalListeners = $this->listeners[self::GLOBAL_EVENT] ?? [];
 
         return array_merge($listeners, $globalListeners);
