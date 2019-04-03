@@ -1,5 +1,11 @@
 # Parable Event
 
+## 0.2.2
+
+_Changes_
+
+- Removed type hint for payload on `trigger`.
+
 ## 0.2.1
 
 _Changes_

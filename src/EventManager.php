@@ -29,8 +29,6 @@ class EventManager
      * payload as a reference in the listener callback parameter list.
      *
      * Example: trigger('event', function (string $event, &$payload) { ... }
-     *
-     * @param null|mixed $payload
      */
     public function trigger(string $event, &$payload = null)
     {
