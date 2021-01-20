@@ -1,6 +1,6 @@
 # Parable Event
 
-[![Build Status](https://travis-ci.com/parable-php/event.svg?branch=master)](https://travis-ci.org/parable-php/event)
+[![Build Status](https://travis-ci.com/parable-php/event.svg?branch=master)](https://travis-ci.com/parable-php/event)
 [![Latest Stable Version](https://poser.pugx.org/parable-php/event/v/stable)](https://packagist.org/packages/parable-php/event)
 [![Latest Unstable Version](https://poser.pugx.org/parable-php/event/v/unstable)](https://packagist.org/packages/parable-php/event)
 [![License](https://poser.pugx.org/parable-php/event/license)](https://packagist.org/packages/parable-php/event)
@@ -9,7 +9,7 @@ Parable Event is a straightforward event system that gets the job done.
 
 ## Install
 
-Php 7.1+ and [composer](https://getcomposer.org) are required.
+Php 8.0+ and [composer](https://getcomposer.org) are required.
 
 ```bash
 $ composer require parable-php/event
