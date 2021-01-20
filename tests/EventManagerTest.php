@@ -4,20 +4,20 @@ namespace Parable\Event\Tests;
 
 use Parable\Event\EventManager;
 use Parable\Event\Exception;
+use PHPUnit\Framework\TestCase;
 
-class EventManagerTest extends \PHPUnit\Framework\TestCase
+class EventManagerTest extends TestCase
 {
-    /** @var EventManager */
-    protected $eventManager;
+    protected EventManager $eventManager;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->eventManager = new \Parable\Event\EventManager();
+        $this->eventManager = new EventManager();
     }
 
-    public function testListenToEventAndUpdate()
+    public function testListenToEventAndUpdate(): void
     {
-        $this->eventManager->listen('test_event', function ($event, string &$payload) {
+        $this->eventManager->listen('test_event', static function ($event, string &$payload) {
             $payload .= "-suffixed";
         });
 
@@ -28,12 +28,12 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
         self::assertSame('payload-suffixed', $payload);
     }
 
-    public function testMultipleEvents()
+    public function testMultipleEvents(): void
     {
-        $this->eventManager->listen('test_event', function ($event, string &$payload) {
+        $this->eventManager->listen('test_event', static function ($event, string &$payload) {
             $payload .= "-suffixed";
         });
-        $this->eventManager->listen('test_event', function ($event, string &$payload) {
+        $this->eventManager->listen('test_event', static function ($event, string &$payload) {
             $payload .= "-twice!";
         });
 
@@ -44,9 +44,9 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
         self::assertSame('payload-suffixed-twice!', $payload);
     }
 
-    public function testSameEventMultipleTimesGetsCalledOnce()
+    public function testSameEventMultipleTimesGetsCalledOnce(): void
     {
-        $closure = function ($event, string &$payload) {
+        $closure = static function ($event, string &$payload) {
             $payload .= "-suffixed";
         };
 
@@ -60,9 +60,9 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
         self::assertSame('payload-suffixed', $payload);
     }
 
-    public function testGlobalListeners()
+    public function testGlobalListeners(): void
     {
-        $this->eventManager->listenAll(function ($event, string &$payload) {
+        $this->eventManager->listenAll(static function ($event, string &$payload) {
             $payload .= "-suffixed";
         });
 
@@ -74,10 +74,10 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
         self::assertSame('payload-suffixed-suffixed', $payload);
     }
 
-    public function testCannotTriggerGlobalEvent()
+    public function testCannotTriggerGlobalEvent(): void
     {
-        self::expectException(Exception::class);
-        self::expectExceptionMessage('Cannot specifically trigger global event.');
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Cannot specifically trigger global event.');
 
         $this->eventManager->trigger('*');
     }

@@ -9,7 +9,7 @@ class EventManager
     /**
      * @var callable[][]
      */
-    protected $listeners = [];
+    protected array $listeners = [];
 
     public function listen(string $event, callable $listener): void
     {
