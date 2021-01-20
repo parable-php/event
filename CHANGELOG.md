@@ -1,5 +1,10 @@
 # Parable Event
 
+## 0.3.0
+
+_Changes_
+- Dropped support for php7, php8 only from now on.
+
 ## 0.2.2
 
 _Changes_
