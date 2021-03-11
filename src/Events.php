@@ -2,13 +2,11 @@
 
 namespace Parable\Event;
 
-class EventManager
+class Events
 {
     protected const GLOBAL_EVENT = '*';
 
-    /**
-     * @var callable[][]
-     */
+    /** @var callable[][] */
     protected array $listeners = [];
 
     public function listen(string $event, callable $listener): void
@@ -33,7 +31,7 @@ class EventManager
     public function trigger(string $event, &$payload = null)
     {
         if ($event === self::GLOBAL_EVENT) {
-            throw new Exception('Cannot specifically trigger global event.');
+            throw new EventsException('Cannot trigger global event, only listen to it.');
         }
 
         foreach ($this->getListeners($event) as $listener) {
@@ -44,7 +42,7 @@ class EventManager
     /**
      * Return the callables associated with the event.
      *
-     * @return callable[][]
+     * @return callable[]
      */
     protected function getListeners(string $event): array
     {

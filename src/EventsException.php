@@ -2,6 +2,6 @@
 
 namespace Parable\Event;
 
-class Exception extends \Exception
+class EventsException extends \Exception
 {
 }

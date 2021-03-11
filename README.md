@@ -18,12 +18,12 @@ $ composer require parable-php/event
 ## Usage
 
 Events are very simple. You add listeners to events (`string` values) and then trigger an update with those events. You 
-can pass payloads into the `trigger` calls, which will get passed to all relevant listeners. 
+can pass payloads into the `trigger` calls, which will get passed to all relevant listeners.
 
 ```php
-use \Parable\Event\EventManager;
+use \Parable\Event\Events;
 
-$eventManager = new EventManager();
+$eventManager = new Events();
 
 $eventManager->listen('event_number_one', function (string $event, string &$payload) {
     $payload .= '-updated!';

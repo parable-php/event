@@ -1,5 +1,12 @@
 # Parable Event
 
+## 0.4.0
+
+_Changes_
+- Add static analysis using psalm.
+- `EventManager` has been renamed to `Events`.
+- `Exception` has been renamed to `EventsException` for clarity.
+
 ## 0.3.0
 
 _Changes_
